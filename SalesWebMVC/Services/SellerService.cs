@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace SalesWebMVC.Services
 {
@@ -31,7 +32,7 @@ namespace SalesWebMVC.Services
 
         public Seller FindById(int  id)
         {
-            return _context.Seller.FirstOrDefault(seller => seller.Id == id);
+            return _context.Seller.Include(seller => seller.Department).FirstOrDefault(seller => seller.Id == id);
         }
 
         public void Remove(int id)
