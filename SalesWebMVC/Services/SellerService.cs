@@ -3,6 +3,7 @@ using SalesWebMVC.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Threading.Tasks;
 
 namespace SalesWebMVC.Services
@@ -18,7 +19,14 @@ namespace SalesWebMVC.Services
 
         public List<Seller> FindAll()
         {
-            return _context.Seller.ToList();
+            //return _context.Seller.ToList();
+            return new List<Seller>();
+        }
+
+        public void Insert(Seller seller)
+        {
+            _context.Add(seller);
+            _context.SaveChanges();
         }
     }
 }
